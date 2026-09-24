@@ -1,279 +1,678 @@
-# InterviewAI — Real-Time Adaptive AI Interview & Live Coding Evaluation Platform
+# InterviewAI
 
-InterviewAI is an AI-powered technical interview platform that combines AI-led interviews, coding evaluation, voice interaction, and interview proctoring.
+> **AI-Powered Interview Platform with Live Coding Evaluation**
 
-Features
+InterviewAI is a full-stack web application that simulates technical interviews using AI and evaluates candidates through **resume-based questioning, coding challenges, real-time interview interaction, and automated evaluation**.
 
-JWT-based user registration and login
+The platform is designed to provide a realistic interview experience while helping candidates understand their technical strengths and areas for improvement.
 
-AI interview sessions
+---
 
-Multiple-choice and open-ended questions
+## 🚀 Features
 
-Text answers and voice-to-text answers
+### 👤 User Authentication
 
-AI interviewer voice using Gemini TTS
+* User registration and login
+* Secure password handling
+* JWT-based authentication
+* Protected application routes
 
-Answer scoring, feedback, strengths, and improvements
+### 📄 Resume Analysis
 
-Monaco live coding editor
+* Upload resume in PDF or DOCX format
+* AI-powered resume analysis
+* Extracts relevant skills, education, projects, and experience
+* Generates interview questions based on the candidate's resume
 
-Judge0 code execution
+### 🤖 AI Interviewer
 
-Compilation, runtime, wrong-answer, timeout, and success handling
+* AI-generated technical interview questions
+* Questions based on resume and selected interview category
+* Dynamic follow-up questions
+* Interview conversation flow
+* AI-generated evaluation and feedback
 
-Camera and microphone based proctoring
+### 💻 Live Coding Evaluation
 
-MediaPipe face detection
+* Coding problems generated for the interview
+* Online code editor
+* Supports programming languages such as Java and Python
+* Code execution through Judge0
+* Test-case based evaluation
+* Displays execution results and errors
 
-No-face and multiple-face detection
+### 🎥 Interview Proctoring
 
-Tab-switch detection
+* Camera and microphone permission handling
+* Interview monitoring
+* Detection of selected suspicious activities
+* Proctoring violation tracking
 
-Copy, paste, cut, and right-click detection
+### 📊 Interview Evaluation
 
-Proctoring violation storage
+* Technical performance evaluation
+* Coding performance evaluation
+* AI-generated feedback
+* Strengths and improvement areas
+* Interview completion tracking
 
-Mark deduction based on violations
+### 🗄️ Database Management
 
-Interview result and evaluation pages
+* PostgreSQL database
+* User information storage
+* Resume information
+* Interview questions and answers
+* Coding submissions
+* Evaluation results
+* Proctoring violations
 
-PostgreSQL database
+### ☁️ Cloud Storage
 
-Tech Stack
+* Resume files stored using Cloudinary
+* Prevents dependency on temporary server storage
+* Secure cloud-based resume file management
 
-Frontend
+---
 
-Next.js
+## 🏗️ System Architecture
 
-React
+```text
+                         ┌──────────────────────┐
+                         │      User / Candidate │
+                         └──────────┬───────────┘
+                                    │
+                                    ▼
+                         ┌──────────────────────┐
+                         │   Next.js Frontend   │
+                         │   React + TypeScript  │
+                         └──────────┬───────────┘
+                                    │
+                              REST API
+                                    │
+                                    ▼
+                         ┌──────────────────────┐
+                         │    FastAPI Backend   │
+                         │     Python API       │
+                         └───────┬───────┬──────┘
+                                 │       │
+                    ┌────────────┘       └────────────┐
+                    ▼                                 ▼
+           ┌─────────────────┐              ┌─────────────────┐
+           │    PostgreSQL   │              │   Google Gemini │
+           │    Database     │              │    AI Service   │
+           └─────────────────┘              └─────────────────┘
+                                      
+                                      
+                    ┌───────────────────────────────┐
+                    │           Services            │
+                    ├───────────────────────────────┤
+                    │ Cloudinary - Resume Storage   │
+                    │ Judge0 - Code Execution       │
+                    └───────────────────────────────┘
+```
 
-TypeScript
+---
 
-Tailwind CSS
+## 🛠️ Technology Stack
 
-Monaco Editor
+### Frontend
 
-Backend
+* Next.js
+* React
+* TypeScript
+* Tailwind CSS
+* HTML5
+* CSS3
 
-Python
+### Backend
 
-FastAPI
+* Python
+* FastAPI
+* Uvicorn
+* SQLAlchemy
+* JWT Authentication
 
-SQLAlchemy
+### Database
 
-PostgreSQL
+* PostgreSQL
 
-JWT
+### AI
 
-Google Gemini API
+* Google Gemini API
 
-Judge0 API
+### Code Execution
 
-AI / Vision
+* Judge0
 
-Gemini TTS
+### Cloud Storage
 
-Gemini transcription
+* Cloudinary
 
-MediaPipe Face Detector
+### Development Tools
 
-Project Structure
+* Git
+* GitHub
+* VS Code
+* Postman / Swagger
 
+### Deployment
+
+* Vercel — Frontend
+* Render — Backend
+* Render PostgreSQL — Database
+* Cloudinary — Resume storage
+
+---
+
+## 📁 Project Structure
+
+```text
 InterviewAI/
-├── ai/
+│
+├── frontend/
+│   ├── src/
+│   │   ├── app/
+│   │   │   ├── login/
+│   │   │   ├── register/
+│   │   │   ├── dashboard/
+│   │   │   ├── interview/
+│   │   │   └── ...
+│   │   │
+│   │   ├── components/
+│   │   └── lib/
+│   │       └── api.ts
+│   │
+│   ├── public/
+│   ├── package.json
+│   ├── next.config.ts
+│   ├── tsconfig.json
+│   └── ...
+│
 ├── backend/
 │   ├── app/
-│   │   ├── api/
-│   │   ├── models/
-│   │   ├── schemas/
+│   │   ├── db/
+│   │   │   ├── database.py
+│   │   │   ├── models.py
+│   │   │   ├── create_tables.py
+│   │   │   └── ...
+│   │   │
+│   │   ├── routes/
+│   │   ├── services/
+│   │   │   ├── resume_storage.py
+│   │   │   └── ...
+│   │   │
 │   │   └── main.py
-│   ├── .venv/
-│   └── requirements.txt
+│   │
+│   ├── storage/
+│   ├── requirements.txt
+│   ├── .env.example
+│   └── ...
+│
+├── ai/
 ├── database/
 ├── docker/
 ├── docs/
-├── frontend/
-│   └── src/
+├── .gitignore
 └── README.md
+```
 
-Requirements
+---
 
-Node.js
+## 🔄 Application Workflow
 
-Python
+```text
+1. User Registration
+        ↓
+2. User Login
+        ↓
+3. Upload Resume
+        ↓
+4. Resume Stored in Cloudinary
+        ↓
+5. AI Analyzes Resume
+        ↓
+6. Interview Questions Generated
+        ↓
+7. AI Technical Interview
+        ↓
+8. Coding Challenge
+        ↓
+9. Code Submitted
+        ↓
+10. Judge0 Executes Code
+        ↓
+11. AI Evaluates Performance
+        ↓
+12. Final Interview Evaluation
+        ↓
+13. Feedback & Results
+```
 
-PostgreSQL
+---
 
-Git
+## 📄 Resume Analysis
 
-Google Gemini API key
+The candidate uploads a resume in **PDF or DOCX format**.
 
-Judge0 access for coding execution
+The backend:
 
-Environment Variables
+1. Validates the uploaded file.
+2. Stores the resume in Cloudinary.
+3. Retrieves the stored file when required.
+4. Extracts the resume content.
+5. Sends relevant information to Gemini.
+6. Generates structured analysis.
+7. Uses the analysis to support personalized interview questions.
 
-Example backend configuration:
+---
 
-DATABASE_URL=postgresql://postgres:YOUR_PASSWORD@localhost:5432/interviewai
-GEMINI_API_KEY=YOUR_GEMINI_API_KEY
+## 🤖 AI Interview Process
 
-For development, Judge0 is set with:
+InterviewAI uses Google Gemini to provide an interactive interview experience.
 
-$env:JUDGE0_API_URL="https://ce.judge0.com"
+The AI can:
 
-Never commit API keys or database passwords.
+* Analyze candidate information.
+* Generate technical questions.
+* Ask follow-up questions.
+* Evaluate answers.
+* Identify strengths.
+* Identify areas for improvement.
+* Generate interview feedback.
 
-Run Backend
+The goal is to make the questions more relevant to the candidate instead of using only a fixed question list.
 
-Open PowerShell:
+---
 
-cd D:\InterviewAIackend
-.\.venv\Scripts\Activate.ps1
-$env:JUDGE0_API_URL="https://ce.judge0.com"
-uvicorn app.main:app --reload
+## 💻 Coding Evaluation
 
-Backend:
+The coding module allows candidates to solve programming problems during the interview.
 
-http://127.0.0.1:8000
+### Process
 
-Swagger:
+```text
+Coding Problem
+      ↓
+Candidate writes code
+      ↓
+Code submission
+      ↓
+Judge0 execution
+      ↓
+Test cases
+      ↓
+Execution result
+      ↓
+Evaluation
+```
 
-http://127.0.0.1:8000/docs
+Judge0 is used to execute submitted code and obtain execution results such as:
 
-Run Frontend
+* Output
+* Compilation errors
+* Runtime errors
+* Execution status
+* Test-case results
 
-Open another PowerShell:
+---
 
-cd D:\InterviewAIrontend
-npm.cmd run dev
+## 🎥 Proctoring
 
-Frontend:
+The interview proctoring module helps monitor the interview environment.
 
-http://localhost:3000
+Depending on the enabled checks, the system can track events such as:
 
-Login:
+* Camera status
+* Microphone status
+* Tab/window-related violations
+* Other configured suspicious activities
 
-http://localhost:3000/login
+Proctoring events can be stored in the PostgreSQL database for later evaluation.
 
-Interview Flow
+---
 
-Candidate logs in.
+## 🗄️ Database
 
-Candidate starts an interview.
+PostgreSQL is used as the primary database.
 
-Questions are loaded.
+The database stores application data such as:
 
-AI interviewer presents each question.
+```text
+Users
+  ↓
+Resumes
+  ↓
+Interviews
+  ↓
+Questions
+  ↓
+Answers
+  ↓
+Coding Submissions
+  ↓
+Evaluations
+  ↓
+Proctoring Violations
+```
 
-Candidate answers using text or voice where supported.
+SQLAlchemy is used for database interaction.
 
-Answers are saved and evaluated.
+---
 
-Coding questions can be executed through Judge0.
+## 🔐 Environment Variables
 
-Proctoring monitors the interview.
-
-Violations are recorded.
-
-Interview is submitted.
-
-Results and evaluation are displayed.
-
-Proctoring
-
-The current system monitors:
-
-One face: normal
-
-No face: violation after 3 seconds
-
-Multiple faces: violation after 3 seconds
-
-Tab switches
-
-Right-click
-
-Copy
-
-Paste
-
-Cut
-
-Violation events are stored through the backend.
-
-Current application logic deducts one mark for every 3 recorded violations.
-
-Voice APIs
-
-AI Interviewer
-
-POST /voice/speak
+Create a `.env` file inside the backend directory.
 
 Example:
 
-{
-  "text": "Please explain polymorphism in Java."
-}
+```env
+DATABASE_URL=your_database_url
 
-Candidate Transcription
+GEMINI_API_KEY=your_gemini_api_key
 
-POST /voice/transcribe
+CLOUDINARY_CLOUD_NAME=your_cloudinary_cloud_name
+CLOUDINARY_API_KEY=your_cloudinary_api_key
+CLOUDINARY_API_SECRET=your_cloudinary_api_secret
 
-The frontend records microphone audio and uploads it for transcription.
+CORS_ORIGINS=http://localhost:3000
+```
 
-Authentication
+For the frontend:
 
-Protected API requests use:
+```env
+NEXT_PUBLIC_API_URL=http://localhost:8000
+```
 
-Authorization: Bearer <access_token>
+> **Important:** Never commit `.env` files, API keys, database passwords, or other secrets to GitHub.
 
-The frontend stores the access token after login and attaches it to authenticated requests.
+---
 
-Coding Evaluation
+## ⚙️ Local Setup
 
-Judge0 is used for code execution.
+### 1. Clone the repository
 
-Supported outcomes include:
+```bash
+git clone https://github.com/Namratha18-hub/InterviewAI.git
+cd InterviewAI
+```
 
-Success
+---
 
-Compilation error
+# 🖥️ Frontend Setup
 
-Runtime error
+Open a terminal inside:
 
-Wrong answer
+```text
+InterviewAI/frontend
+```
 
-Time-limit exceeded
+Install dependencies:
 
-Common Commands
+```powershell
+npm.cmd install
+```
 
-Backend
+Create:
 
-cd D:\InterviewAIackend
-.\.venv\Scripts\Activate.ps1
-$env:JUDGE0_API_URL="https://ce.judge0.com"
-uvicorn app.main:app --reload
+```text
+.env.local
+```
 
-Frontend
+Add:
 
-cd D:\InterviewAIrontend
+```env
+NEXT_PUBLIC_API_URL=http://localhost:8000
+```
+
+Start the development server:
+
+```powershell
 npm.cmd run dev
+```
 
-Python syntax check
+Frontend will normally run at:
 
-python -m py_compile .pppioice.py
+```text
+http://localhost:3000
+```
 
-Development Notes
+---
 
-PostgreSQL must be running before starting the backend.
+# ⚙️ Backend Setup
 
-Keep backend and frontend terminals running during development.
+Open another terminal:
 
-Judge0 can remain configured for local development.
+```powershell
+cd D:\InterviewAI\backend
+```
 
-Deployment configuration can be completed after the project is fully developed.
+Create and activate the virtual environment:
 
-Goal
+```powershell
+python -m venv .venv
+.\.venv\Scripts\Activate.ps1
+```
 
-InterviewAI brings AI interviewing, coding assessment, voice interaction, automated evaluation, proctoring, and performance reporting into one platform.
+Install dependencies:
+
+```powershell
+python -m pip install -r requirements.txt
+```
+
+Create the backend `.env` file and configure the required environment variables.
+
+Create database tables:
+
+```powershell
+python -m app.db.create_tables
+```
+
+Start the FastAPI server:
+
+```powershell
+python -m uvicorn app.main:app --reload
+```
+
+Backend:
+
+```text
+http://localhost:8000
+```
+
+Swagger API documentation:
+
+```text
+http://localhost:8000/docs
+```
+
+---
+
+## 🔌 API
+
+The backend exposes REST APIs for:
+
+* Authentication
+* Resume upload
+* Resume analysis
+* Interview management
+* AI question generation
+* Answer submission
+* Coding evaluation
+* Interview evaluation
+* Proctoring
+
+Interactive API documentation is available through FastAPI Swagger:
+
+```text
+/docs
+```
+
+---
+
+## ☁️ Deployment
+
+### Frontend
+
+The Next.js frontend is deployed using Vercel.
+
+Production frontend:
+
+```text
+https://frontend-7dac.vercel.app/
+```
+
+### Backend
+
+The FastAPI backend is deployed using Render.
+
+Production API:
+
+```text
+https://interviewai-nhhd.onrender.com
+```
+
+API documentation:
+
+```text
+https://interviewai-nhhd.onrender.com/docs
+```
+
+### Database
+
+PostgreSQL is hosted using Render.
+
+### Resume Storage
+
+Cloudinary is used for cloud-based resume storage.
+
+---
+
+## 🔒 Security
+
+InterviewAI follows basic security practices including:
+
+* JWT-based authentication
+* Password hashing
+* Protected API routes
+* Environment variables for secrets
+* CORS configuration
+* File type validation
+* File size validation
+* Cloud-based resume storage
+* Database-backed user data
+
+Sensitive credentials should always be stored in environment variables rather than source code.
+
+---
+
+## 🧪 Testing
+
+Before deployment, test the following major workflows:
+
+### Authentication
+
+```text
+Register → Login → Access Dashboard
+```
+
+### Resume
+
+```text
+Upload Resume → Store Resume → Analyze Resume
+```
+
+### Interview
+
+```text
+Start Interview → Answer Questions → Submit Interview
+```
+
+### Coding
+
+```text
+Open Problem → Write Code → Run/Submit → Receive Result
+```
+
+### Evaluation
+
+```text
+Complete Interview → Generate Evaluation → View Feedback
+```
+
+---
+
+## 🎯 Project Objectives
+
+The main objectives of InterviewAI are:
+
+* Provide an AI-powered interview simulation.
+* Personalize interview questions using resume information.
+* Evaluate technical and coding performance.
+* Provide immediate and meaningful feedback.
+* Create a realistic technical interview environment.
+* Combine AI, web development, databases, and code execution into one platform.
+
+---
+
+## 🔮 Future Enhancements
+
+Possible future improvements include:
+
+* Voice-based AI interviews
+* Real-time speech-to-text
+* Advanced facial and behavior analysis
+* More programming languages
+* Difficulty-based question generation
+* Detailed performance analytics
+* Interview history and progress tracking
+* Personalized learning recommendations
+* Advanced anti-cheating mechanisms
+* Improved AI evaluation models
+
+---
+
+## 👩‍💻 Author
+
+**Namratha**
+
+Computer Science and Engineering Undergraduate
+
+GitHub:
+https://github.com/Namratha18-hub
+
+LinkedIn:
+https://www.linkedin.com/in/namratha-sanapala
+
+---
+
+## 📜 License
+
+This project is developed for educational and academic purposes.
+
+---
+
+## ⭐ Project Summary
+
+**InterviewAI** combines:
+
+```text
+AI
++
+Resume Analysis
++
+Technical Interviews
++
+Live Coding
++
+Code Execution
++
+Proctoring
++
+Automated Evaluation
++
+Cloud Storage
++
+PostgreSQL
+```
+
+to create a complete **AI-powered technical interview platform**.
