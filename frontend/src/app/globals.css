@@ -1,0 +1,412 @@
+@import "tailwindcss";
+
+:root {
+  --background: #ffffff;
+  --foreground: #0f172a;
+}
+
+html.dark {
+  --background: #0f172a;
+  --foreground: #f8fafc;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  transition:
+    background-color 0.2s ease,
+    color 0.2s ease;
+}
+
+/* ============================================================
+   INTERVIEWAI DARK THEME
+   ============================================================ */
+
+html.dark body {
+  background: #0f172a;
+  color: #f8fafc;
+}
+
+/* ------------------------------------------------------------
+   Main backgrounds
+   ------------------------------------------------------------ */
+
+html.dark .bg-gray-50,
+html.dark .bg-slate-50 {
+  background-color: #0f172a !important;
+}
+
+html.dark .bg-white {
+  background-color: #111827 !important;
+}
+
+html.dark .bg-gray-100 {
+  background-color: #1f2937 !important;
+}
+
+html.dark .bg-gray-200 {
+  background-color: #374151 !important;
+}
+
+html.dark .bg-slate-100 {
+  background-color: #1e293b !important;
+}
+
+/* ------------------------------------------------------------
+   Borders
+   ------------------------------------------------------------ */
+
+html.dark .border-gray-100 {
+  border-color: #1f2937 !important;
+}
+
+html.dark .border-gray-200 {
+  border-color: #374151 !important;
+}
+
+html.dark .border-gray-300 {
+  border-color: #4b5563 !important;
+}
+
+/* ------------------------------------------------------------
+   Text
+   ------------------------------------------------------------ */
+
+html.dark .text-gray-900 {
+  color: #f9fafb !important;
+}
+
+html.dark .text-gray-800 {
+  color: #e5e7eb !important;
+}
+
+html.dark .text-gray-700 {
+  color: #d1d5db !important;
+}
+
+html.dark .text-gray-600 {
+  color: #9ca3af !important;
+}
+
+html.dark .text-gray-500 {
+  color: #9ca3af !important;
+}
+
+html.dark .text-gray-400 {
+  color: #6b7280 !important;
+}
+
+/* ------------------------------------------------------------
+   Gray hover states
+   ------------------------------------------------------------ */
+
+html.dark .hover\:bg-gray-50:hover {
+  background-color: #1f2937 !important;
+}
+
+html.dark .hover\:bg-gray-100:hover {
+  background-color: #374151 !important;
+}
+
+html.dark .hover\:bg-gray-200:hover {
+  background-color: #4b5563 !important;
+}
+
+html.dark .hover\:text-gray-900:hover {
+  color: #ffffff !important;
+}
+
+/* ------------------------------------------------------------
+   Indigo
+   ------------------------------------------------------------ */
+
+html.dark .bg-indigo-50 {
+  background-color: #1e1b4b !important;
+}
+
+html.dark .bg-indigo-100 {
+  background-color: #312e81 !important;
+}
+
+html.dark .text-indigo-600 {
+  color: #818cf8 !important;
+}
+
+html.dark .text-indigo-700 {
+  color: #a5b4fc !important;
+}
+
+html.dark .text-indigo-800 {
+  color: #c7d2fe !important;
+}
+
+/* ------------------------------------------------------------
+   Blue
+   ------------------------------------------------------------ */
+
+html.dark .bg-blue-50 {
+  background-color: #172554 !important;
+}
+
+html.dark .bg-blue-100 {
+  background-color: #1e3a8a !important;
+}
+
+html.dark .text-blue-600 {
+  color: #60a5fa !important;
+}
+
+html.dark .text-blue-700 {
+  color: #93c5fd !important;
+}
+
+html.dark .text-blue-800 {
+  color: #bfdbfe !important;
+}
+
+html.dark .text-blue-900 {
+  color: #dbeafe !important;
+}
+
+/* ------------------------------------------------------------
+   Green
+   ------------------------------------------------------------ */
+
+html.dark .bg-green-50 {
+  background-color: #052e16 !important;
+}
+
+html.dark .bg-green-100 {
+  background-color: #14532d !important;
+}
+
+html.dark .text-green-600 {
+  color: #4ade80 !important;
+}
+
+html.dark .text-green-700 {
+  color: #86efac !important;
+}
+
+html.dark .text-green-800 {
+  color: #bbf7d0 !important;
+}
+
+/* ------------------------------------------------------------
+   Emerald
+   ------------------------------------------------------------ */
+
+html.dark .bg-emerald-50 {
+  background-color: #022c22 !important;
+}
+
+html.dark .bg-emerald-100 {
+  background-color: #064e3b !important;
+}
+
+html.dark .text-emerald-600 {
+  color: #34d399 !important;
+}
+
+html.dark .text-emerald-700 {
+  color: #6ee7b7 !important;
+}
+
+/* ------------------------------------------------------------
+   Red
+   ------------------------------------------------------------ */
+
+html.dark .bg-red-50 {
+  background-color: #450a0a !important;
+}
+
+html.dark .bg-red-100 {
+  background-color: #7f1d1d !important;
+}
+
+html.dark .text-red-600 {
+  color: #f87171 !important;
+}
+
+html.dark .text-red-700 {
+  color: #fca5a5 !important;
+}
+
+html.dark .text-red-800 {
+  color: #fecaca !important;
+}
+
+/* ------------------------------------------------------------
+   Amber / Yellow
+   ------------------------------------------------------------ */
+
+html.dark .bg-amber-50,
+html.dark .bg-yellow-50 {
+  background-color: #451a03 !important;
+}
+
+html.dark .bg-amber-100,
+html.dark .bg-yellow-100 {
+  background-color: #78350f !important;
+}
+
+html.dark .text-amber-600 {
+  color: #fbbf24 !important;
+}
+
+html.dark .text-amber-700,
+html.dark .text-yellow-700 {
+  color: #fcd34d !important;
+}
+
+html.dark .text-amber-800,
+html.dark .text-yellow-800 {
+  color: #fde68a !important;
+}
+
+/* ------------------------------------------------------------
+   Violet
+   ------------------------------------------------------------ */
+
+html.dark .bg-violet-50 {
+  background-color: #2e1065 !important;
+}
+
+html.dark .text-violet-700 {
+  color: #c4b5fd !important;
+}
+
+/* ------------------------------------------------------------
+   Slate colors
+   ------------------------------------------------------------ */
+
+html.dark .bg-slate-900 {
+  background-color: #020617 !important;
+}
+
+html.dark .text-slate-900 {
+  color: #f8fafc !important;
+}
+
+html.dark .text-slate-800 {
+  color: #e2e8f0 !important;
+}
+
+html.dark .text-slate-700 {
+  color: #cbd5e1 !important;
+}
+
+html.dark .text-slate-600 {
+  color: #94a3b8 !important;
+}
+
+html.dark .text-slate-500 {
+  color: #94a3b8 !important;
+}
+
+html.dark .text-slate-400 {
+  color: #64748b !important;
+}
+
+/* ------------------------------------------------------------
+   Inputs / textareas / selects
+   ------------------------------------------------------------ */
+
+html.dark input,
+html.dark textarea,
+html.dark select {
+  background-color: #111827 !important;
+  color: #f9fafb !important;
+  border-color: #4b5563 !important;
+}
+
+html.dark input::placeholder,
+html.dark textarea::placeholder {
+  color: #6b7280 !important;
+}
+
+html.dark input:focus,
+html.dark textarea:focus,
+html.dark select:focus {
+  border-color: #6366f1 !important;
+}
+
+/* Select options */
+html.dark option {
+  background-color: #111827;
+  color: #f9fafb;
+}
+
+/* ------------------------------------------------------------
+   Buttons / hover
+   ------------------------------------------------------------ */
+
+html.dark .hover\:bg-white:hover {
+  background-color: #1f2937 !important;
+}
+
+/* ------------------------------------------------------------
+   Shadows
+   ------------------------------------------------------------ */
+
+html.dark .shadow-sm,
+html.dark .shadow-md,
+html.dark .shadow-lg {
+  --tw-shadow-color: rgb(0 0 0 / 0.35);
+}
+
+/* ------------------------------------------------------------
+   Dividers
+   ------------------------------------------------------------ */
+
+html.dark .divide-gray-100 > :not([hidden]) ~ :not([hidden]) {
+  border-color: #1f2937 !important;
+}
+
+/* ------------------------------------------------------------
+   Links
+   ------------------------------------------------------------ */
+
+html.dark a {
+  color: inherit;
+}
+
+/* ------------------------------------------------------------
+   Gradient text
+   ------------------------------------------------------------ */
+
+html.dark .bg-clip-text {
+  background-clip: text;
+  -webkit-background-clip: text;
+}
+
+/* ------------------------------------------------------------
+   Smooth theme transition
+   ------------------------------------------------------------ */
+
+html.dark,
+html.dark body,
+html.dark main,
+html.dark header,
+html.dark aside,
+html.dark section,
+html.dark article,
+html.dark div,
+html.dark button,
+html.dark input,
+html.dark textarea,
+html.dark select {
+  transition:
+    background-color 0.2s ease,
+    border-color 0.2s ease,
+    color 0.2s ease;
+}

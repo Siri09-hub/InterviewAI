@@ -1,0 +1,16 @@
+# Next.js / Node.js
+node_modules/
+.next/
+.env
+.env.*
+!.env.example
+
+# Python / FastAPI
+__pycache__/
+.venv/
+venv/
+.pytest_cache/
+dist/
+build/
+# Uploaded resume files
+backend/storage/resumes/
